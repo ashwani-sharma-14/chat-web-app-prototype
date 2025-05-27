@@ -1,7 +1,7 @@
 import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { generateTokens } from "../utils/jwt.js";
-
+import env from "../config/env.js";
 const userSignUp = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -95,7 +95,7 @@ const userLogout = async (req, res) => {
 
     res.cookie("refreshToken", "", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: env.NODE_ENV === "production",
       sameSite: "lax",
       maxAge: 0,
     });

@@ -8,7 +8,8 @@ const env = {
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
-  }
+  },
+  NODE_ENV: process.env.NODE_ENV
 };
 
 export default env;
