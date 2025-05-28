@@ -6,7 +6,7 @@ import { dbConnection } from "./config/dbConfig.js";
 const server = http.createServer(app);
 export const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173","https://chatprototype.netlify.app"],
     credentials: true,
   },
 });
