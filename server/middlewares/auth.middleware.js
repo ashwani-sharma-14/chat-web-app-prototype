@@ -27,13 +27,21 @@ export const authMiddleware = async (req, res, next) => {
           decoded.userId
         );
 
+        // Update cookie settings when refreshing tokens
         res.cookie("accessToken", accessToken, {
           httpOnly: false,
           secure: true,
+          sameSite: "none",
+          maxAge: 15 * 60 * 1000,
+          path: "/",
         });
+
         res.cookie("refreshToken", newRefreshToken, {
           httpOnly: true,
           secure: true,
+          sameSite: "none",
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          path: "/",
         });
 
         req.user = { id: decoded.userId };
