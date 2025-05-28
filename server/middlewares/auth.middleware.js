@@ -27,9 +27,8 @@ export const authMiddleware = async (req, res, next) => {
           decoded.userId
         );
 
-        // Set new cookies
         res.cookie("accessToken", accessToken, {
-          httpOnly: true,
+          httpOnly: false,
           secure: true,
         });
         res.cookie("refreshToken", newRefreshToken, {
