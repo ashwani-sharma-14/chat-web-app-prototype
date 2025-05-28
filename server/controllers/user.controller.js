@@ -109,7 +109,6 @@ const userLogout = async (req, res) => {
 
 const checkAuth = async (req, res) => {
   try {
-    // Find user without password field
     const user = await User.findById(req.user.id).select("-password");
     if (!user) {
       return res.status(401).json({ message: "User not found" });

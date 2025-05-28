@@ -33,6 +33,10 @@ const Chat = () => {
 
   useEffect(() => {
     fetchUsers();
+    // Clear selected user when component unmounts
+    return () => {
+      useChatStore.getState().clearSelectedUser();
+    };
   }, [fetchUsers]);
 
   const handleMediaSelect = (e, type) => {

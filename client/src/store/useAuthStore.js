@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axiosInstance from "../utils/axiosInstance";
 import { io } from "socket.io-client";
 
-const baseURL = "http://localhost:5000";
+const baseURL = "https://chat-web-app-prototype.onrender.com";
 export const useAuthStore = create((set, get) => ({
   authState: null,
   isCheckingAuth: true,
@@ -18,7 +18,7 @@ export const useAuthStore = create((set, get) => ({
       const response = await axiosInstance.get("/user/check-auth");
       if (response.data.user) {
         set({ authState: response.data.user, isCheckingAuth: false });
-        get().connectSocket(); // Connect socket when auth check is successful
+        get().connectSocket(); 
         return true;
       }
     } catch (error) {
@@ -57,7 +57,7 @@ export const useAuthStore = create((set, get) => ({
     set({ isLoggingIn: true, error: null });
     try {
       const response = await axiosInstance.post("/user/login", credentials);
-
+      console.log(response);
       set({
         authState: response.data.user,
         isLoggingIn: false,
